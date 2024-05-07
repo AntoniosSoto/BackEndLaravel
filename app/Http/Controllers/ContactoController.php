@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contactos;
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 
-class ContactosController extends Controller
+class ContactoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class ContactosController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contactos $contactos)
+    public function show(Contacto $contacto)
     {
         //
     }
@@ -42,7 +42,7 @@ class ContactosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Contactos $contactos)
+    public function edit(Contacto $contacto)
     {
         //
     }
@@ -50,7 +50,7 @@ class ContactosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contactos $contactos)
+    public function update(Request $request, Contacto $contacto)
     {
         //
     }
@@ -58,7 +58,7 @@ class ContactosController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contactos $contactos)
+    public function destroy(Contacto $contacto)
     {
         //
     }
