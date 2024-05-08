@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResource('expenses', ExpenseController::class);
+Route::get('contacto', [ContactoController::class, 'index']);

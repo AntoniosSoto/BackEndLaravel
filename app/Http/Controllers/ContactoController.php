@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contacto;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ContactoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $contactos = Contacto::orderBy('id','asc')->paginate(50); 
+        //return $contactos;
+        return response()->json($contactos, Response::HTTP_OK);
     }
 
     /**
