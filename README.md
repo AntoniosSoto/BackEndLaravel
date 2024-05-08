@@ -17,7 +17,7 @@ composer install
 2. Crea una nueva base de datos con tu gestor de base de datos preferido. Como sugerencia podrías crear una base de datos llamada `prueba`.
 
 3. Crea una copia del archivo env.example, renombralo como .env y configura las variables de entorno correspondientes, preferiblemente las variables para la conexión a la base de datos.
-
+```json
 APP_NAME=Contactos
 APP_ENV=local
 APP_KEY=
@@ -77,7 +77,7 @@ VITE_PUSHER_HOST="${PUSHER_HOST}"
 VITE_PUSHER_PORT="${PUSHER_PORT}"
 VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
-
+```
 
 4. Ejecuta las migraciones y los seeders.
 ```bash
