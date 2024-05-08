@@ -35,7 +35,7 @@ class ContactoController extends Controller
      */
     public function show(string $id): JsonResponse
     {
-        $contacto = $id;
+        $contacto = Contacto::findOrFail($id);
 
         return response()->json($contacto, Response::HTTP_OK);
     }
