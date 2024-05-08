@@ -15,7 +15,7 @@ class ContactoController extends Controller
      */
     public function index(): JsonResponse
     {
-        $contactos = Contacto::orderBy('id','asc')->paginate(50); 
+        $contactos = Contacto::orderBy('id','desc')->paginate(50); 
         //return $contactos;
         return response()->json($contactos, Response::HTTP_OK);
     }
