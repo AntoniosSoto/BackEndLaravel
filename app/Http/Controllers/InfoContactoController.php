@@ -2,64 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\InfoContacto;
 use Illuminate\Http\Request;
+use App\Models\InfoContacto;
 
 class InfoContactoController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra la información de contacto por el ID del contacto.
+     *
+     * @param  int  $contacto_id
+     * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function show($contacto_id)
     {
-        //
+        $infoContacto = InfoContacto::where('contacto_id', $contacto_id)->get();
+        return response()->json($infoContacto);
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Almacena un nuevo detalle de contacto en la base de datos.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'contacto_id' => 'required|exists:contactos,id',
+            'telefono' => 'nullable|string|max:15',
+            'correo' => 'nullable|email|max:50',
+            'direccion' => 'nullable|string',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(InfoContacto $infoContacto)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(InfoContacto $infoContacto)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, InfoContacto $infoContacto)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(InfoContacto $infoContacto)
-    {
-        //
+        $infoContacto = InfoContacto::create($request->all());
+        return response()->json($infoContacto, 201);
     }
 }
