@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveContactoRequest;
 use App\Models\Contacto;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,19 +21,13 @@ class ContactoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SaveContactoRequest $request): JsonResponse
     {
-        //
+        $contacto = Contacto::create($request->validated());
+
+        return response()->json($contacto, Response::HTTP_CREATED);
     }
 
     /**
@@ -56,9 +51,13 @@ class ContactoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contacto $contacto)
+    public function update(SaveContactoRequest $request, string $id): JsonResponse
     {
-        //
+        $contacto = Contacto::findOrFail($id);
+
+        $contacto->update($request->validated());
+
+        return response()->json($contacto, Response::HTTP_OK);
     }
 
     /**

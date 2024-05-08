@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\AlphaWithSpaces;
 
-class SaveExpenseRequest extends FormRequest
+class SaveContactoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +23,9 @@ class SaveExpenseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type'         => 'required|max:100',
-            'amount'       => 'required|numeric|decimal:0,2',
-            'description'  => 'required',
-            'expense_date' => 'required|date',
+            'nombre'         => ['required','max:20',new AlphaWithSpaces],
+            'apellido_paterno'       => ['required','max:20',new AlphaWithSpaces],
+            'apellido_materno'  => ['required','max:20',new AlphaWithSpaces],
         ];
     }
 }
