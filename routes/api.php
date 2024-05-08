@@ -14,4 +14,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('contacto', [ContactoController::class, 'index']);
+Route::apiResource('contacto', ContactoController::class);

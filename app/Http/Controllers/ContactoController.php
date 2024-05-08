@@ -38,9 +38,11 @@ class ContactoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Contacto $contacto)
+    public function show(string $id): JsonResponse
     {
-        //
+        $contacto = $id;
+
+        return response()->json($contacto, Response::HTTP_OK);
     }
 
     /**
@@ -62,8 +64,12 @@ class ContactoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Contacto $contacto)
+    public function destroy(string $id): JsonResponse
     {
-        //
+        $contacto = Contacto::findOrFail($id);
+
+        $contacto->delete();
+
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
