@@ -1,8 +1,5 @@
 
-# BudgetBuddy API
-
-Este proyecto se centra en la creación de una API diseñada para gestionar registros de gastos. La API ofrece un conjunto de endpoints que posibilitan diversas operaciones, entre las que se incluyen la obtención de un listado completo de gastos, la recuperación de información detallada de un gasto específico, la creación de nuevos registros de gastos, la actualización de información existente sobre un gasto y la eliminación de registros de gastos previamente almacenados. 
-
+# Contactos API
 ## Pre-requisitos 📋
 
 Para la correcta ejecución de este proyecto, necesitas tener las siguientes tecnologías instaladas en tu ordenador.
@@ -11,22 +8,17 @@ Para la correcta ejecución de este proyecto, necesitas tener las siguientes tec
 * MySQL
 
 ## Instalación 🔧
-
-1. Clona este proyecto.
-```bash
-git clone https://github.com/JoanArturo/budget-buddy-api.git
 ```
 
-2. Instala las dependencias de PHP con composer.
+1. Instala las dependencias de PHP con composer.
 ```bash
 composer install
 ```
+2. Crea una nueva base de datos con tu gestor de base de datos preferido. Como sugerencia podrías crear una base de datos llamada `prueba`.
 
-3. Crea una nueva base de datos con tu gestor de base de datos preferido. Como sugerencia podrías crear una base de datos llamada `budget_buddy`.
-
-4. Crea una copia del archivo env.example, renombralo como .env y configura las variables de entorno correspondientes, preferiblemente las variables para la conexión a la base de datos.
+3. Crea una copia del archivo env.example, renombralo como .env y configura las variables de entorno correspondientes, preferiblemente las variables para la conexión a la base de datos.
 ```json
-APP_NAME=BudgetBuddy
+APP_NAME=Contactos
 APP_ENV=local
 APP_KEY=
 APP_DEBUG=true
@@ -87,17 +79,12 @@ VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
 VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 ```
 
-5. Genera una APP_KEY.
-```bash
-php artisan key:generate
-```
-
-6. Ejecuta las migraciones y los seeders.
+4. Ejecuta las migraciones y los seeders.
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-7. Ejecuta el proyecto laravel.
+5. Ejecuta el proyecto laravel.
 ```bash
 php artisan serve
 ```
@@ -116,13 +103,9 @@ A continuación se detallan los endpoints disponibles en la API:
 
 | Método  | Ruta                        | Descripción                                                                                  |
 |---------|-----------------------------|----------------------------------------------------------------------------------------------|
-| GET     | /api/expenses               | Devuelve un array de gastos.                                                                 |
-| POST    | /api/expenses               | Crea un gasto utilizando la información enviada dentro del `body` de la solicitud.           |
-| GET     | /api/expenses/`{expense}`   | Devuelve el objeto de gasto con el `id` especificado.                                        |
-| PUT     | /api/expenses/`{expense}`   | Actualiza el gasto con el `id` especificado utilizando los datos del `body` de la solicitud. |
-| DELETE  | /api/expenses/`{expense}`   | Elimina el gasto con el `id` especificado.                                                   |
+| GET     | /api/contacto               | Devuelve un array de contactos.                                                                 |
+| POST    | /api/contacto               | Crea un contacto utilizando la información enviada dentro del `body` de la solicitud.           |
+| GET     | /api/contacto/`{id}`   | Devuelve el objeto de contacto con el `id` especificado.                                        |
+| PUT     | /api/contacto/`{id}`   | Actualiza el contacto con el `id` especificado utilizando los datos del `body` de la solicitud. |
+| DELETE  | /api/contacto/`{id}`   | Elimina el contacto con el `id` especificado.                                                   |
 
-
-## Autor 🖋️
-
-- [@JoanArturo](https://github.com/JoanArturo)
