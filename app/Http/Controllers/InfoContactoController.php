@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 use App\Models\InfoContacto;
+use Illuminate\Http\Response;
 
 class InfoContactoController extends Controller
 {
@@ -15,15 +17,17 @@ class InfoContactoController extends Controller
      */
     public function show($contacto_id)
     {
-        $infoContacto = InfoContacto::where('contacto_id', $contacto_id)->get();
-        return response()->json($infoContacto);
+        $informacionCompleta = Contacto::join('info_contactos', 'contactos.id', '=', 'info_contactos.contacto_id')
+        ->where('contactos.id', $contacto_id)
+        ->select('info_contactos.telefono', 'info_contactos.correo', 'info_contactos.direccion')
+        ->orderBy('info_contactos.id','desc')
+        ->get();
+
+        return response()->json($informacionCompleta, Response::HTTP_OK);
     }
 
     /**
      * Almacena un nuevo detalle de contacto en la base de datos.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
